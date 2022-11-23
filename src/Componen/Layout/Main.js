@@ -1,15 +1,14 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import Navbar from '../Commonpage/Navbar';
 
 const Main = () => {
     return (
-        <section className="flex gap-6">
+        <div>
              <Navbar></Navbar>
-            <div className="m-3">
-             <h1>contain</h1>
-            </div>
+             <Outlet></Outlet>
             
-        </section>
+        </div>
     );
 };
 
