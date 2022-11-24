@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Error from "../Commonpage/Error";
 import Login from "../Commonpage/Login";
 import Singup from "../Commonpage/Singup";
+import Allusershow from "../Dashboard/Adminpage/Allusershow";
 import Dashdoardmain from "../Dashboard/Layout/Dashdoardmain";
 import Main from "../Layout/Main";
 import Home from "../Page/Home";
@@ -37,6 +38,10 @@ export const routers=createBrowserRouter([
         element:<Adminsellerroute><Dashdoardmain></Dashdoardmain></Adminsellerroute>,
         errorElement:<Error></Error>,
         children:[
+            {
+                path:"/Dashboard",
+                element:<Allusershow></Allusershow>
+            }
             
         ]
     }
