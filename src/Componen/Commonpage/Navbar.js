@@ -5,9 +5,9 @@ import { faEllipsisVertical} from '@fortawesome/free-solid-svg-icons'
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../Context/Authprovider';
 const Navbar = () => {
-    const {theme, setTheme,user}=useContext(AuthContext);
+    const {theme, setTheme,user,signoutall, userrole}=useContext(AuthContext);
     return (
-        <div className="relative z-50">
+        <div className="relative z-40">
         <div className="navbar bg-base-100 fixed top-0">
         <div className="navbar-start">
           <div className="dropdown">
@@ -15,10 +15,10 @@ const Navbar = () => {
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
             </label>
             <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-              <li><a>Item 1</a></li>
+              <li><a>Home</a></li>
               <li tabIndex={0}>
                 <a className="justify-between">
-                  Parent
+                  Category
                   <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"/></svg>
                 </a>
                 <ul className="p-2">
@@ -41,10 +41,10 @@ const Navbar = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
-            <li><a>Item 1</a></li>
+            <li><a>Home</a></li>
             <li tabIndex={0}>
               <a>
-                Parent
+              Category
                 <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
               </a>
               <ul className="p-2">
@@ -52,11 +52,17 @@ const Navbar = () => {
                 <li><a>Submenu 2</a></li>
               </ul>
             </li>
-            <li><a>Item 3</a></li>
+            {
+               userrole==="Admin"|| userrole==="Seller"? <li><a>Dashboard</a></li>:<></>
+            }
+             {
+               userrole==="Buyer"&&<li><a>My Order</a></li>
+            }
+            
           </ul>
         </div>
         <div className="navbar-end lg:mr-5">
-  <div className="flex gap-4">
+  <div className="flex gap-2 justify-center items-center">
     <div className="dropdown dropdown-end">
       <label tabindex="0" className="btn btn-ghost btn-circle">
         <div className="indicator">
@@ -75,9 +81,11 @@ const Navbar = () => {
       </div>
     </div>
     {
-            user!==null&&  <div className="w-10 rounded-full">
-              <img src={user.photoURL} alt=""/>
-             </div>
+            user!==null&& <div class="avatar online">
+            <div class="w-8  rounded-full">
+            <img src={user.photoURL} alt="" className=""/>
+            </div>
+          </div> 
     }
   
     <div className="dropdown dropdown-end">
@@ -95,7 +103,7 @@ const Navbar = () => {
           user!==null?<>
            
         <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/prfile">Settings</NavLink></li>
-        <li><Link >Logout</Link></li>
+        <li><Link onClick={signoutall}>Logout</Link></li>
           </>:
           <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined}to="/Loginpage">Login</NavLink></li>
         }
