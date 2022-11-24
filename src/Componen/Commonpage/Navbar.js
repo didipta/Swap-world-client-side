@@ -27,7 +27,7 @@ const Navbar = () => {
                 <ul className="bg-base-100 p-1 w-full">
                 {
                     catagory.map(c=>
-                      <li className="w-auto"><a><img src={c.img} alt="" className="w-10"></img>
+                      <li className="w-auto"><a><img src={c.img} alt="" className="w-8"></img>
                         {c.name}</a></li>
                       )
                   }
@@ -36,13 +36,13 @@ const Navbar = () => {
                 </ul>
               </li>
               {
-               userrole==="Admin"|| userrole==="Seller"? <li><a>Dashboard</a></li>:<></>
+               userrole==="Admin"|| userrole==="Seller"? <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/Dashboard">Dashboard</NavLink></li>:<></>
             }
              {
                userrole==="Buyer"&&<li><a>My Order</a></li>
             }
             <li><a>About us</a></li>
-            <li><a>Comtact Us</a></li>
+            <li><a>Contact Us</a></li>
             </ul>
           </div>
           <a className="btn btn-ghost normal-case text-xl">
@@ -67,7 +67,7 @@ const Navbar = () => {
                 <div className="flex">
                 {
                     catagory.map(c=>
-                      <li className="w-auto"><a><img src={c.img} alt="" className="w-10"></img>
+                      <li className="w-auto"><a><img src={c.img} alt="" className="w-8"></img>
                         {c.name}</a></li>
                       )
                   }
@@ -76,13 +76,13 @@ const Navbar = () => {
               </ul>
             </li>
             {
-               userrole==="Admin"|| userrole==="Seller"? <li><a>Dashboard</a></li>:<></>
+               userrole==="Admin"|| userrole==="Seller"? <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/Dashboard">Dashboard</NavLink></li>:<></>
             }
              {
                userrole==="Buyer"&&<li><a>My Order</a></li>
             }
              <li><a>About us</a></li>
-            <li><a>Comtact Us</a></li>
+            <li><a>Contact Us</a></li>
           </ul>
         </div>
         <div className="navbar-end lg:mr-5">

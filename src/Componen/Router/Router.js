@@ -5,6 +5,7 @@ import Singup from "../Commonpage/Singup";
 import Dashdoardmain from "../Dashboard/Layout/Dashdoardmain";
 import Main from "../Layout/Main";
 import Home from "../Page/Home";
+import Adminsellerroute from "./Adminsellerroute";
 
 export const routers=createBrowserRouter([
     {
@@ -33,7 +34,7 @@ export const routers=createBrowserRouter([
     ,
     {
         path:"/Dashboard",
-        element:<Dashdoardmain></Dashdoardmain>,
+        element:<Adminsellerroute><Dashdoardmain></Dashdoardmain></Adminsellerroute>,
         errorElement:<Error></Error>,
         children:[
             

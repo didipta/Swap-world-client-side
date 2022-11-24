@@ -1,6 +1,6 @@
 import React from 'react';
 import img from "../../img/Loading.gif"
-const Loadimg = () => {
+const Loading = () => {
     return (
         <div className="mt-16 flex justify-center items-center">
             <img src={img} alt="" className="w-10"></img>
@@ -8,4 +8,4 @@ const Loadimg = () => {
     );
 };
 
-export default Loadimg;
+export default Loading;
