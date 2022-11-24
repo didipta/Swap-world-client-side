@@ -4,8 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisVertical} from '@fortawesome/free-solid-svg-icons'
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../Context/Authprovider';
+import Category from '../Hook/Category';
 const Navbar = () => {
     const {theme, setTheme,user,signoutall, userrole}=useContext(AuthContext);
+    const catagory=Category();
+    
     return (
         <div className="relative z-40">
         <div className="navbar bg-base-100 fixed top-0">
@@ -15,18 +18,31 @@ const Navbar = () => {
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
             </label>
             <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-              <li><a>Home</a></li>
+              <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/home">Home</NavLink></li>
               <li tabIndex={0}>
                 <a className="justify-between">
                   Category
                   <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"/></svg>
                 </a>
-                <ul className="p-2">
-                  <li><a>Submenu 1</a></li>
-                  <li><a>Submenu 2</a></li>
+                <ul className="bg-base-100 p-1 w-full">
+                {
+                    catagory.map(c=>
+                      <li className="w-auto"><a><img src={c.img} alt="" className="w-10"></img>
+                        {c.name}</a></li>
+                      )
+                  }
+                  
+                  
                 </ul>
               </li>
-              <li><a>Item 3</a></li>
+              {
+               userrole==="Admin"|| userrole==="Seller"? <li><a>Dashboard</a></li>:<></>
+            }
+             {
+               userrole==="Buyer"&&<li><a>My Order</a></li>
+            }
+            <li><a>About us</a></li>
+            <li><a>Comtact Us</a></li>
             </ul>
           </div>
           <a className="btn btn-ghost normal-case text-xl">
@@ -41,15 +57,22 @@ const Navbar = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
-            <li><a>Home</a></li>
+          <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/home">Home</NavLink></li>
             <li tabIndex={0}>
               <a>
               Category
                 <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
               </a>
-              <ul className="p-2">
-                <li><a>Submenu 1</a></li>
-                <li><a>Submenu 2</a></li>
+              <ul className="bg-base-100">
+                <div className="flex">
+                {
+                    catagory.map(c=>
+                      <li className="w-auto"><a><img src={c.img} alt="" className="w-10"></img>
+                        {c.name}</a></li>
+                      )
+                  }
+                </div>
+            
               </ul>
             </li>
             {
@@ -58,7 +81,8 @@ const Navbar = () => {
              {
                userrole==="Buyer"&&<li><a>My Order</a></li>
             }
-            
+             <li><a>About us</a></li>
+            <li><a>Comtact Us</a></li>
           </ul>
         </div>
         <div className="navbar-end lg:mr-5">
