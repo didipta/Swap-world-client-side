@@ -28,7 +28,7 @@ const Login = () => {
       .then(res=>
           {
               const user = res.user;
-            fetch(`http://localhost:5000/user/${data.Email}`)
+            fetch(`https://swap-world-server-site.vercel.app/user/${data.Email}`)
             .then(res => res.json())
             .then(data => {
               setloading(false);
@@ -71,7 +71,7 @@ const Login = () => {
           email: user.email
         }
 
-         fetch("http://localhost:5000/user", {
+         fetch("https://swap-world-server-site.vercel.app/user", {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

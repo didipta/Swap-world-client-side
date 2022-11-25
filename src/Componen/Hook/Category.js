@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 export const Category = () => {
     const [category,setCategory]=useState([]);
     useEffect(()=>{
-        axios.get("http://localhost:5000/Category")
+        axios.get("https://swap-world-server-site.vercel.app/Category")
         .then(resp=>{
             setCategory(resp.data);
            

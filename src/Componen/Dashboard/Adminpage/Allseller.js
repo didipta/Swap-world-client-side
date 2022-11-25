@@ -6,13 +6,13 @@ import Deletemodal from '../../Modal/Deletemodal';
 import Makeadmin from '../../Modal/Makeadmin';
 import Verifymodal from '../../Modal/Verifymodal';
 
-const Allusershow = () => {
+const Allseller = () => {
   useTitle("All User")
     const[userid,SetUserid]=useState("");
     const {data: alluser = [],refetch} = useQuery({
         queryKey: ['alluser'],
         queryFn: async() =>{
-            const res = await fetch('https://swap-world-server-site.vercel.app/users?role=Buyer');
+            const res = await fetch('https://swap-world-server-site.vercel.app/users?role=Seller');
             const data = await res.json();
             return data;
         }
@@ -41,6 +41,7 @@ const Allusershow = () => {
     <tbody>
       {
         alluser.map(user=>
+           
             <tr key={user._id}>
             <th>
             <label htmlFor="delete-modal" onClick={()=>{SetUserid(user._id)}}>
@@ -76,7 +77,7 @@ const Allusershow = () => {
                 }
               
             </th>
-          </tr>  
+          </tr> 
             )
       }
     </tbody>
@@ -105,4 +106,4 @@ const Allusershow = () => {
     );
 };
 
-export default Allusershow;
+export default Allseller;

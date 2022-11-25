@@ -7,7 +7,7 @@ const Allproductshow = () => {
     const {data: allproduct = [],refetch} = useQuery({
         queryKey: ['productall'],
         queryFn: async() =>{
-            const res = await fetch('http://localhost:5000/productall');
+            const res = await fetch('https://swap-world-server-site.vercel.app/productall');
             const data = await res.json();
             return data;
         }

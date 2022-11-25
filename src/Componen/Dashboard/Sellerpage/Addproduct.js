@@ -71,7 +71,7 @@ const Addproduct = () => {
 
     const productadd=(product)=>
     {
-        fetch("http://localhost:5000/product", {
+        fetch("https://swap-world-server-site.vercel.app/product", {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

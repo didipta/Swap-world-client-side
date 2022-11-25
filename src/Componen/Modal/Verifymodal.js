@@ -3,7 +3,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const Verifymodal = ({userid,refetch}) => {
     const handleverified = () => {
-        fetch(`http://localhost:5000/usersstate/${userid}`, {
+        fetch(`https://swap-world-server-site.vercel.app/usersstate/${userid}`, {
             method: 'PUT', 
             // headers: {
             //     authorization: `bearer ${localStorage.getItem('accessToken')}`

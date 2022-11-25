@@ -6,7 +6,7 @@ const Adminseller = email => {
     const [userdetails,seUserdetailes]=useState({});
     useEffect(() => {
         if (email) {
-            fetch(`http://localhost:5000/user/${email}`)
+            fetch(`https://swap-world-server-site.vercel.app/user/${email}`)
                 .then(res => res.json())
                 .then(data => {
                     seUserdetailes(data);

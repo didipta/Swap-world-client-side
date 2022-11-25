@@ -3,7 +3,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const Deletemodal = ({userid,refetch}) => {
     const handleverified = () => {
-        fetch(`http://localhost:5000/userdelete/${userid}`, {
+        fetch(`https://swap-world-server-site.vercel.app/userdelete/${userid}`, {
             method:"DELETE", 
             // headers: {
             //     authorization: `bearer ${localStorage.getItem('accessToken')}`

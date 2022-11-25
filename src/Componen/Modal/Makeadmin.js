@@ -3,7 +3,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const Makeadmin = ({userid,refetch}) => {
     const handleverified = () => {
-        fetch(`http://localhost:5000/makeadmin/${userid}`, {
+        fetch(`https://swap-world-server-site.vercel.app/makeadmin/${userid}`, {
             method:"PUT", 
             // headers: {
             //     authorization: `bearer ${localStorage.getItem('accessToken')}`

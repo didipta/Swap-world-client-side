@@ -81,7 +81,7 @@ const Singup = () => {
     {
       
       const user ={name, email,role,phone};
-      fetch("http://localhost:5000/user", {
+      fetch("https://swap-world-server-site.vercel.app/user", {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

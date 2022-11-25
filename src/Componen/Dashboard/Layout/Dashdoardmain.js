@@ -34,7 +34,8 @@ const Dashdoardmain = () => {
             <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
             <ul className="menu p-4 w-80 text-base-content  lg:bg-transparent bg-base-100 border border-spacing-x-10 border-x-stone-200">
             <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/home">Home</NavLink></li>
-            <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/Dashboard/alluser">All User</NavLink></li>
+            <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/Dashboard/alluser">All Buyer</NavLink></li>
+            <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/Dashboard/allseller">All Seller</NavLink></li>
             <li><Link onClick={signoutall} to="/Loginpage">Logout</Link></li>
             </ul>
         
