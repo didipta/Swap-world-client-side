@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData, useNavigation } from 'react-router-dom';
 import Loading from '../Commonpage/Loading/Loading';
+import useTitle from '../Hook/Titlehook';
 
 const Productshow = (params) => {
+   
     const product = useLoaderData();
+    useTitle(product.Category.name+"Category")
+    const showproduct=product.Product.filter(p=> p?.states!=="sold out");
     const navigation = useNavigation();
     console.log(product);
     return (
@@ -17,11 +21,11 @@ const Productshow = (params) => {
                 <img src={product.Category.img} alt="" className="w-8"></img>
                 <h1 className="text-xl font-semibold">{product.Category.name} Category</h1>
                </div>
-               <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1  gap-5 justify-center items-center lg:p-20 md:p-15 p-10">
+               <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1  gap-5 justify-center items-center lg:pt-20 md:pt-15 pt-10">
                 {
-                     product.Product.map(product=>
+                     showproduct.map(product=>
                         <div key={product._id} className="p-6 shadow-lg bg-white shadow-slate-300 flex flex-col justify-center gap-2 text-slate-800 font-medium rounded-sm">
-                            <img src={product.image} alt="" className="w-56 h-56 m-auto"></img>
+                            <img src={product.image} alt="" className="w-56 h-60 m-auto"></img>
                             <h1 className="font-semibold">{product.p_name}</h1>
                             <small>{product.location}</small>
                             <h1 className="text-sm font-medium">orginal price: <span className="text-slate-400">{product.original_p}-৳</span></h1>
@@ -38,7 +42,7 @@ const Productshow = (params) => {
                             </div>
                             <div className="flex gap-2 pt-4">
                                 <button className="btn btn-sm bg-teal-500 text-white border-none">Book noe</button>
-                                <button className="btn btn-sm">Report</button>
+                                <button className="btn btn-sm bg-red-400 text-white border-none">Report</button>
                             </div>
                         </div>
                         )

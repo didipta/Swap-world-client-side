@@ -103,7 +103,7 @@ const Singup = () => {
       }
     return (
         <div>
-            <div className=" p-5 h-screen flex flex-col justify-center items-center">
+            <div className=" p-5 h-screen flex flex-col justify-center items-center overflow-x-auto">
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col justify-center gap-2 items-center shadow shadow-slate-200 rounded-xl p-5 w-96 m-auto">
           <h1 className="text-xl font-semibold mb-5">Registration Here :)</h1>
           <input type="text" {...register("name", {

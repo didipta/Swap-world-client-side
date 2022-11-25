@@ -1,13 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../../Context/Authprovider';
 import useTitle from '../../Hook/Titlehook';
 
-const Allproductshow = () => {
-    useTitle("All Product")
+const Myproduct = () => {
+    const {user}=useContext(AuthContext);
+    useTitle("My Product")
     const {data: allproduct = [],refetch} = useQuery({
         queryKey: ['productall'],
         queryFn: async() =>{
-            const res = await fetch('https://swap-world-server-site.vercel.app/productall?email=');
+            const res = await fetch(`https://swap-world-server-site.vercel.app/productall?email=${user.email}`);
             const data = await res.json();
             return data;
         }
@@ -83,4 +85,4 @@ const Allproductshow = () => {
     );
 };
 
-export default Allproductshow;
+export default Myproduct;

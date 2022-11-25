@@ -8,6 +8,7 @@ import Dashdoardmain from "../Dashboard/Layout/Dashdoardmain";
 import Dashdoardseller from "../Dashboard/Layout/Dashdoardseller";
 import Addproduct from "../Dashboard/Sellerpage/Addproduct";
 import Allproductshow from "../Dashboard/Sellerpage/Allproductshow";
+import Myproduct from "../Dashboard/Sellerpage/Myproduct";
 import Main from "../Layout/Main";
 import Home from "../Page/Home";
 import Productshow from "../Product/Productshow";
@@ -86,6 +87,11 @@ export const routers=createBrowserRouter([
             {
                 path:"/SellerDashboard/allproduct",
                 element:<Allproductshow></Allproductshow>
+            }
+            ,
+            {
+                path:"/SellerDashboard/myproduct",
+                element:<Myproduct></Myproduct>
             }
             
         ]
