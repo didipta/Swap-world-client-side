@@ -4,8 +4,8 @@ import Loading from '../Commonpage/Loading/Loading';
 import { AuthContext } from '../Context/Authprovider';
 import Adminseller from '../Hook/Adminseller';
 
-const Adminsellerroute = ({children}) => {
-    const { user, loading } = useContext(AuthContext);
+const Sellerroute = ({children}) => {
+    const { user, loading ,signoutall} = useContext(AuthContext);
     const [isAdmin, isAdminLoading] = Adminseller(user?.email);
     const location = useLocation();
 
@@ -13,11 +13,11 @@ const Adminsellerroute = ({children}) => {
         return <Loading></Loading>
     }
 
-    if (isAdmin==="Admin") {
+    if (isAdmin==="Seller") {
         return children;
     }
-
-    return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
+    signoutall();
+    return <Navigate to="/Loginpage" state={{ from: location }} replace></Navigate>;
 };
 
-export default Adminsellerroute;
+export default Sellerroute;

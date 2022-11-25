@@ -1,12 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useContext } from 'react';
+import React from 'react';
 import logo from '../../img/logo.jpg';
 import {faBars} from '@fortawesome/free-solid-svg-icons'
-import { Link, NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import Footer from '../../Commonpage/Footer';
-import { AuthContext } from '../../Context/Authprovider';
-const Dashdoardmain = () => {
-    const {signoutall}=useContext(AuthContext);
+const Dashdoardseller = () => {
     return (
         <div>
             <div className="flex justify-between items-center">
@@ -32,10 +30,9 @@ const Dashdoardmain = () => {
                 </div>
         <div className="drawer-side ">
             <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
-            <ul className="menu p-4 w-80 text-base-content  lg:bg-transparent bg-base-100 border border-spacing-x-10 border-x-stone-200">
+            <ul className="menu p-4 w-80 text-base-content  lg:bg-transparent bg-base-100 border border-spacing-x-24 border-x-stone-400">
             <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/home">Home</NavLink></li>
-            <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/Dashboard/alluser">All User</NavLink></li>
-            <li><Link onClick={signoutall} to="/Loginpage">Logout</Link></li>
+            <li><a>Sidebar Item 2</a></li>
             </ul>
         
         </div>
@@ -45,4 +42,4 @@ const Dashdoardmain = () => {
     );
 };
 
-export default Dashdoardmain;
+export default Dashdoardseller;

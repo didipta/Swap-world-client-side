@@ -25,7 +25,7 @@ const Makeadmin = ({userid,refetch}) => {
   <div className="modal-box">
     <h3 className="font-bold text-lg">Are you sure to make him Admin</h3>
     <div className="modal-action">
-      <label  htmlFor="admin-modal" onClick={handleverified} className="btn bg-green-800">Yes</label>
+      <label  htmlFor="admin-modal" onClick={handleverified} className="btn btn-success">Yes</label>
       <label htmlFor="admin-modal" className="btn">No</label>
     </div>
   </div>

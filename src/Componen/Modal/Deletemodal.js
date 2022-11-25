@@ -23,7 +23,7 @@ const Deletemodal = ({userid,refetch}) => {
   <div className="modal-box">
     <h3 className="font-bold text-lg">Are you sure delete this account!</h3>
     <div className="modal-action">
-      <label htmlFor="delete-modal" onClick={handleverified} className="btn">Yes!</label>
+      <label htmlFor="delete-modal" onClick={handleverified} className="btn btn-success">Yes!</label>
       <label htmlFor="delete-modal" className="btn">No!</label>
     </div>
   </div>

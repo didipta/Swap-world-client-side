@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile} from "firebase/auth"
+import {createUserWithEmailAndPassword, deleteUser, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile} from "firebase/auth"
 import { app } from '../Firbase/Firebase.config';
 export const AuthContext=createContext();
 const Authprovider = ({children}) => {
@@ -32,6 +32,10 @@ const Authprovider = ({children}) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth,email,password);
     }
+    const deleteuser=()=>
+    {
+        return deleteUser(auth.currentUser);
+    }
     const siginwithemailpassword=(email,password)=>
     {
         setLoading(true);
@@ -52,7 +56,8 @@ const Authprovider = ({children}) => {
             .then(res => res.json())
             .then(data => {
               setUserrole(data.role)
-            });
+            })
+            
               setUser(currentUser);
               setLoading(false);
           });
@@ -73,7 +78,8 @@ const Authprovider = ({children}) => {
         upadateuserprofile,
         signoutall,
         userrole,setUserrole,
-        forgetpass
+        forgetpass,
+        deleteuser
         }
     return (
         <AuthContext.Provider value={authInfo}>

@@ -1,11 +1,13 @@
 
 import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
+import useTitle from '../../Hook/Titlehook';
 import Deletemodal from '../../Modal/Deletemodal';
 import Makeadmin from '../../Modal/Makeadmin';
 import Verifymodal from '../../Modal/Verifymodal';
 
 const Allusershow = () => {
+  useTitle("All User")
     const[userid,SetUserid]=useState("");
     const {data: alluser = [],refetch} = useQuery({
         queryKey: ['alluser'],

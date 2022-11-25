@@ -9,9 +9,10 @@ import Smallloading from './Loading/Smallloading';
 import { AuthContext } from '../Context/Authprovider';
 import { GoogleAuthProvider } from 'firebase/auth';
 import Forgetpass from './Forgetpass';
+import toast from 'react-hot-toast';
 const Login = () => {
     useTitle("Login page");
-    const { googlelogin,siginwithemailpassword,setUserrole}=useContext(AuthContext);
+    const { googlelogin,siginwithemailpassword,setUserrole,deleteuser}=useContext(AuthContext);
     const { register,formState: { errors }, handleSubmit } = useForm();
     const [loading,setloading]=useState(false);
     const[passwordtype,setPassword]=useState(false);
@@ -26,20 +27,35 @@ const Login = () => {
       siginwithemailpassword(data.Email,data.Password)
       .then(res=>
           {
-               const user = res.user;
+              const user = res.user;
+            fetch(`http://localhost:5000/user/${data.Email}`)
+            .then(res => res.json())
+            .then(data => {
+              setloading(false);
+              navigator(from,{replace:true});
+             })
+              .catch(error=>{
+              deleteuser()
+              .then(() => {
+
+                setError("your account deleted by Admin");
+                toast.error("Account already deleted")
+                setloading(false);
+                  // User deleted.
+                }).catch((error) => {
+                  // An error ocurred
+                  // ...
+                });
+            })
               // const currentUser = {
               //     email: user.email
               // }
-              setloading(false);
-               navigator(from,{replace:true});
-            
-               
-              
+
           })
       .catch(e=>
           {
               setError("Please check your email and password");
-              console.log(e);
+              setloading(false);
           })
     }
 

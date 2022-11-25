@@ -24,7 +24,7 @@ const Verifymodal = ({userid,refetch}) => {
   <div className="modal-box">
     <h3 className="font-bold text-lg">Are you sure to make him verified</h3>
     <div className="modal-action">
-      <label onClick={handleverified} htmlFor="verify-modal" className="btn bg-green-600">Yes</label>
+      <label onClick={handleverified} htmlFor="verify-modal" className="btn btn-success">Yes</label>
       <label htmlFor="verify-modal" className="btn">No</label>
     </div>
   </div>
