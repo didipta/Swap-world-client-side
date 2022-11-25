@@ -1,10 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../../img/logo.jpg';
 import {faBars} from '@fortawesome/free-solid-svg-icons'
-import { NavLink, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 import Footer from '../../Commonpage/Footer';
+import { AuthContext } from '../../Context/Authprovider';
 const Dashdoardseller = () => {
+    const {signoutall}=useContext(AuthContext);
     return (
         <div>
             <div className="flex justify-between items-center">
@@ -32,7 +34,9 @@ const Dashdoardseller = () => {
             <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
             <ul className="menu p-4 w-80 text-base-content  lg:bg-transparent bg-base-100 border border-spacing-x-24 border-x-stone-400">
             <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/home">Home</NavLink></li>
-            <li><a>Sidebar Item 2</a></li>
+            <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/SellerDashboard/addproduct">Add Product</NavLink></li>
+            <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/SellerDashboard/allproduct">All Product</NavLink></li>
+            <li><Link onClick={signoutall} to="/Loginpage">Logout</Link></li>
             </ul>
         
         </div>

@@ -6,6 +6,7 @@ import Allusershow from "../Dashboard/Adminpage/Allusershow";
 import Dashdoardmain from "../Dashboard/Layout/Dashdoardmain";
 import Dashdoardseller from "../Dashboard/Layout/Dashdoardseller";
 import Addproduct from "../Dashboard/Sellerpage/Addproduct";
+import Allproductshow from "../Dashboard/Sellerpage/Allproductshow";
 import Main from "../Layout/Main";
 import Home from "../Page/Home";
 import Adminroute from "./Adminroute";
@@ -65,8 +66,13 @@ export const routers=createBrowserRouter([
             }
             ,
             {
-                path:"/SellerDashboard/alluser",
+                path:"/SellerDashboard/addproduct",
                 element:<Addproduct></Addproduct>
+            }
+            ,
+            {
+                path:"/SellerDashboard/allproduct",
+                element:<Allproductshow></Allproductshow>
             }
             
         ]

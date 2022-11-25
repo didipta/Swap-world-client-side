@@ -27,7 +27,7 @@ const Singup = () => {
 
 
     const onSubmit = data => {
-        console.log(data)
+        
         const image=data.image[0];
         setloading(true);
         const formdata=new FormData();
