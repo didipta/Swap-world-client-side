@@ -33,10 +33,10 @@ const Navbar = () => {
             </ul>
           </div>
           <a className="btn btn-ghost normal-case text-xl">
-          <div className="flex justify-items-center items-center gap-2">
+          <div className="flex justify-center items-center">
             <img src={logo} alt="" class="mask mask-circle w-10" ></img>
             <div>
-                <h1 className="text-lg font-semibold text-cyan-600"><span className="text-xl font-bold text-sky-600">S</span>wap-World</h1>
+                <h1 className="text-lg font-semibold text-cyan-600"><span className="lg:text-xl font-bold text-sky-600">S</span>wap-World</h1>
                 <p className="text-sm text-slate-400 center">Mobile Resela</p>
             </div>
             </div>
@@ -77,19 +77,45 @@ const Navbar = () => {
         </div>
       </div>
     </div>
-    {
-            user!==null&& <div class="avatar online">
+    <div className="lg:block hidden">
+          {
+            user!==null&& <div className="flex justify-center items-center gap-2">
+
+            <div class="avatar online">
             <div class="w-8  rounded-full">
             <img src={user.photoURL} alt="" className=""/>
             </div>
-          </div> 
-    }
+             </div> 
+             <div className="font-bold">
+              {user.displayName}
+             </div>
+              </div>
+            }
+          </div>
   
     <div className="dropdown dropdown-end">
       <label tabindex="0" className="btn btn-ghost btn-circle avatar">
         <FontAwesomeIcon icon={faEllipsisVertical} className="text-xl"></FontAwesomeIcon>
       </label>
       <ul tabindex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+        <li>
+          <div className="lg:hidden">
+          {
+            user!==null&& <div className="flex justify-center items-center gap-2">
+
+            <div class="avatar online">
+            <div class="w-8  rounded-full">
+            <img src={user.photoURL} alt="" className=""/>
+            </div>
+             </div> 
+             <div className="font-bold">
+              {user.displayName}
+             </div>
+              </div>
+            }
+          </div>
+       
+        </li>
       <li>
           <NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/Aboutus" className="justify-between">
             About Us

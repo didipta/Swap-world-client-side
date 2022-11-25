@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Category from '../Hook/Category';
 
 const Catagorysshow = () => {
@@ -10,12 +11,12 @@ const Catagorysshow = () => {
             <div className="grid grid-cols-4 justify-center items-center">
                 {
                     categorys.map(c=>
-                        <a key={c._id}>
-                            <div className="flex flex-col justify-center items-center gap-2 border border-spacing-3 h-28">
+                        <Link to={`/category/${c._id}`} key={c._id}>
+                            <div className="flex flex-col justify-evenly items-center gap-2 border border-spacing-3 h-28">
                             <img src={c.img} alt="" className="w-10"></img>
                             <h1 className="font-medium uppercase">{c.name}</h1>
                             </div>
-                        </a>
+                        </Link>
                         )
                 }
             </div>

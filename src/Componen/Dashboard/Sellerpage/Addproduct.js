@@ -56,6 +56,7 @@ const Addproduct = () => {
                 selleremail:userdetails.email,
                 sellerid:userdetails._id,
                 sellerstates:userdetails?.states==="verified"?userdetails.states:"verify",
+                postDate:(new Date()).toString()
             }
 
             productadd(product);

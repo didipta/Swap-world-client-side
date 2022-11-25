@@ -80,7 +80,6 @@ const Login = () => {
         })
         .then(res => res.json())
         .then(data =>{
-          setUserrole(currentUser.role);
           navigator(from,{replace:true});
         })
         .catch(e=>

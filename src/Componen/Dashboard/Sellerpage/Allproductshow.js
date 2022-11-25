@@ -14,7 +14,7 @@ const Allproductshow = () => {
     });
     return (
         <div>
-            <h1>All Product</h1>
+            <h1 className="text-2xl font-bold mb-5">All Product</h1>
             <div className="overflow-x-auto w-full">
   <table className="table w-full">
     <thead>
@@ -29,7 +29,7 @@ const Allproductshow = () => {
         <th>Year</th>
         <th>condition</th>
         <th>Details</th>
-        <th>Edit</th>
+        <th>post Date</th>
       </tr>
     </thead>
     <tbody>
@@ -67,7 +67,10 @@ const Allproductshow = () => {
             </td>
 
             <td>
-                <div className="w-32">{product.p_details.slice(0,20)+"..."}</div>
+                {product.p_details.slice(0,20)+"..."}
+            </td>
+            <td>
+              {((product.postDate).split(" "))[0] +" "+((product.postDate).split(" "))[1]+" "+((product.postDate).split(" "))[2]+" "+((product.postDate).split(" "))[3]}
             </td>
           </tr>  
             )
