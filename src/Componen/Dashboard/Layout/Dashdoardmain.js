@@ -36,6 +36,7 @@ const Dashdoardmain = () => {
             <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/home">Home</NavLink></li>
             <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/Dashboard/alluser">All Buyer</NavLink></li>
             <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/Dashboard/allseller">All Seller</NavLink></li>
+            <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/Dashboard/allproduct">All Product</NavLink></li>
             <li><Link onClick={signoutall} to="/Loginpage">Logout</Link></li>
             </ul>
         

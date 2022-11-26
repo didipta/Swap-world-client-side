@@ -7,6 +7,7 @@ const Authprovider = ({children}) => {
     const [user,setUser]=useState(null);
     const [loading,setLoading]=useState(true);
     const [userrole,setUserrole]=useState("");
+    const [carditem,setCartitem]=useState([]);
     const auth=getAuth(app);
     const googlelogin=(provider)=>
     {
@@ -20,6 +21,7 @@ const Authprovider = ({children}) => {
         signOut(auth)
         .then(res => {
             setUserrole(" ")
+            setCartitem([])
             // localStorage.removeItem('Artworld-token');
             setUser(null);
         })
@@ -56,6 +58,12 @@ const Authprovider = ({children}) => {
             .then(res => res.json())
             .then(data => {
               setUserrole(data.role)
+              fetch(`https://swap-world-server-site.vercel.app/ordertall?email=${data?.email}&&type=Buyer`)
+                    .then(res => res.json())
+                    .then(data => {
+                      setCartitem(data)
+                    })
+      
             })
             
               setUser(currentUser);
@@ -67,6 +75,14 @@ const Authprovider = ({children}) => {
           }
   
       },[])
+      const setcartheandle=()=>
+      {
+            fetch(`https://swap-world-server-site.vercel.app/ordertall?email=${user?.email}&&type=Buyer`)
+                    .then(res => res.json())
+                    .then(data => {
+                      setCartitem(data)
+                    })
+      }
       const authInfo={
         user,
         loading,
@@ -79,7 +95,8 @@ const Authprovider = ({children}) => {
         signoutall,
         userrole,setUserrole,
         forgetpass,
-        deleteuser
+        deleteuser,
+        carditem,
         }
     return (
         <AuthContext.Provider value={authInfo}>

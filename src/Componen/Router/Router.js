@@ -10,6 +10,7 @@ import Addproduct from "../Dashboard/Sellerpage/Addproduct";
 import Allproductshow from "../Dashboard/Sellerpage/Allproductshow";
 import Myproduct from "../Dashboard/Sellerpage/Myproduct";
 import Main from "../Layout/Main";
+import Myorderpage from "../Orderpage/Myorderpage";
 import Home from "../Page/Home";
 import Productshow from "../Product/Productshow";
 import Adminroute from "./Adminroute";
@@ -42,6 +43,10 @@ export const routers=createBrowserRouter([
                 path:"/category/:id",
                 element:<Privetrouter><Productshow></Productshow></Privetrouter>,
                 loader: ({params}) => fetch(`https://swap-world-server-site.vercel.app/productallshow/${params.id}`)
+            },
+            {
+                path:"/Myorder",
+                element:<Privetrouter><Myorderpage></Myorderpage></Privetrouter>,
             }
         ]
     }
@@ -64,6 +69,11 @@ export const routers=createBrowserRouter([
             {
                 path:"/Dashboard/allseller",
                 element:<Allseller></Allseller>
+            }
+            ,
+            {
+                path:"/Dashboard/allproduct",
+                element:<Allproductshow></Allproductshow>
             }
             
         ]

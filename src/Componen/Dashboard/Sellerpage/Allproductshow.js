@@ -34,6 +34,7 @@ const Allproductshow = () => {
         <th>condition</th>
         <th>Details</th>
         <th>post Date</th>
+        <th>Status</th>
       </tr>
     </thead>
     <tbody>
@@ -75,6 +76,9 @@ const Allproductshow = () => {
             </td>
             <td>
               {((product.postDate).split(" "))[0] +","+((product.postDate).split(" "))[1]+" "+((product.postDate).split(" "))[2]+" "+((product.postDate).split(" "))[3]}
+            </td>
+            <td className="text-sm text-cyan-500 font-medium">
+              {product.status}
             </td>
           </tr>  
             )

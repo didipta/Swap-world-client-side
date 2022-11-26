@@ -1,14 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import logo from "../../Componen/img/logo.jpg"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisVertical} from '@fortawesome/free-solid-svg-icons'
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../Context/Authprovider';
 import Category from '../Hook/Category';
+import { useQuery } from '@tanstack/react-query';
 const Navbar = () => {
-    const {theme, setTheme,user,signoutall, userrole}=useContext(AuthContext);
-    const catagory=Category();
-    
+    const {theme, setTheme,user,signoutall, userrole,carditem}=useContext(AuthContext);
+  const filtercart=carditem.filter(cart=>cart?.sataus!=="paid");
+    let total=0;
+    filtercart?.map(x=>
+      {
+        total+=x?.p_price;
+      }
+      )
     return (
         <div className="relative z-40">
         <div className="navbar bg-base-100 fixed top-0">
@@ -26,7 +32,7 @@ const Navbar = () => {
               userrole==="Seller"? <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/SellerDashboard">Dashboard</NavLink></li>:<></>
             }
              {
-               user!==null&&<li><a>My Order</a></li>
+               user!==null&&<li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/Myorder">My Order</NavLink></li>
             }
             <li><a>Contact Us</a></li>
             </ul>
@@ -51,7 +57,7 @@ const Navbar = () => {
               userrole==="Seller"? <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/SellerDashboard">Dashboard</NavLink></li>:<></>
             }
              {
-               user!==null&&<li><a>My Order</a></li>
+               user!==null&&<li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined}to="/Myorder">My Order</NavLink></li>
             }
              
             <li><a>Contact Us</a></li>
@@ -63,15 +69,15 @@ const Navbar = () => {
       <label tabindex="0" className="btn btn-ghost btn-circle">
         <div className="indicator">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-          <span className="badge badge-sm indicator-item">0</span>
+          <span className="badge badge-sm indicator-item">{filtercart?.length}</span>
         </div>
       </label>
       <div tabindex="0" className="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow">
         <div className="card-body">
-          <span className="font-bold text-lg"> Items 9</span>
-          <span className="text-info">Subtotal:9 </span>
+          <span className="font-bold text-lg"> Items {filtercart?.length}</span>
+          <span class="text-info">Subtotal: {total} </span>
           <div className="card-actions">
-            <button className="btn btn-outline btn-block">View cart</button>
+            <Link to="/Myorder"><button className="btn btn-outline btn-sm btn-block">View cart</button></Link>
           </div>
         </div>
       </div>

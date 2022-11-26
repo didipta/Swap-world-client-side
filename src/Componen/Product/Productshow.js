@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLoaderData, useNavigation } from 'react-router-dom';
 import Loading from '../Commonpage/Loading/Loading';
 import useTitle from '../Hook/Titlehook';
 import Booknow from './Booknow';
 
-const Productshow = (params) => {
+const Productshow = () => {
    
     const product = useLoaderData();
     const [products,SetProduct]=useState({});
     useTitle(product.Category.name+"Category")
-    const showproduct=product.Product.filter(p=> p?.status!=="Sold out");
+    const filtweproduct=product.Product.filter(p=> p?.status!=="Sold out");
+    const showproduct=filtweproduct.filter(p=> p?.status!=="Booking");
     const navigation = useNavigation();
-    console.log(product);
     return (
         <div className="p-10 pt-20">
             {
                 navigation.state === "loading"&&<Loading></Loading>
             }
             {
-                product.Product.length===0?<h1 className="text-xl text-center font-semibold">Product Comeing Soon</h1>:<>
+               showproduct.length===0?<h1 className="text-xl text-center font-semibold">Product Comeing Soon</h1>:<>
                 <div className="flex justify-center items-center m-auto gap-3">
                 <img src={product.Category.img} alt="" className="w-8"></img>
                 <h1 className="text-xl font-semibold">{product.Category.name} Category</h1>
@@ -26,7 +26,7 @@ const Productshow = (params) => {
                <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1  gap-5 justify-center items-center lg:pt-20 md:pt-15 pt-10">
                 {
                      showproduct.map(product=>
-                        <div key={product._id} className="p-6 shadow-lg bg-white shadow-slate-300 flex flex-col justify-center gap-2 text-slate-800 font-medium rounded-sm">
+                        <div key={product._id} className="p-6 shadow-md bg-white shadow-slate-300 flex flex-col justify-center gap-2 text-slate-800 font-medium rounded-md">
                             <img src={product.image} alt="" className="w-56 h-60 m-auto"></img>
                             <h1 className="font-semibold">{product.p_name}</h1>
                             <small>{product.location}</small>
@@ -43,7 +43,7 @@ const Productshow = (params) => {
                            
                             </div>
                             <div className="flex gap-2 pt-4">
-                            <label htmlFor="booknow-modal-3" className="btn btn-sm bg-teal-500 text-white border-none" onClick={()=>SetProduct(product)}>Book noe</label>
+                            <label htmlFor="booknow-modal-3" className="btn btn-sm bg-teal-500 text-white border-none" onClick={()=>SetProduct(product)}>Book now</label>
                             <button className="btn btn-sm bg-red-400 text-white border-none">WishList</button>
                             </div>
                         </div>
@@ -56,6 +56,7 @@ const Productshow = (params) => {
             <Booknow
             products={products}
             ></Booknow>
+       
         </div>
     );
 };

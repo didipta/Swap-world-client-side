@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast, { Toaster } from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Smallloading from '../Commonpage/Loading/Smallloading';
 import { AuthContext } from '../Context/Authprovider';
 
@@ -9,6 +9,7 @@ const Booknow = ({products}) => {
     const {user}=useContext(AuthContext);
     const [loading,setloading]=useState(false);
     const { register, handleSubmit } = useForm();
+    const [selction,setSelection]=useState(false);
     const navigator=useNavigate();
     const onSubmit = data =>
     {
@@ -22,6 +23,7 @@ const Booknow = ({products}) => {
           email:user.email,
           location:data.location,
           number:data.number,
+          seller:products.selleremail,
           sataus:"Booking"
         }
         orderadd(order);
@@ -40,7 +42,8 @@ const Booknow = ({products}) => {
         .then(data =>{
             setloading(false)
             toast.success("Booking successful")
-            navigator("/");
+
+            setSelection(true);
         })
         .catch(e=>
           {
@@ -55,16 +58,27 @@ const Booknow = ({products}) => {
         <div className="modal-box relative">
             <label htmlFor="booknow-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
             <h3 className="text-lg font-bold">Product Book Now!</h3>
-           <form className="flex flex-col justify-center items-center gap-3 pt-5" onSubmit={handleSubmit(onSubmit)}>
-           <input type="text" placeholder="Type here" value={products.p_name} className="input input-bordered input-secondary w-full max-w-xs" disabled readOnly/>
-           <input type="text" placeholder="Type here"  value={products.resela_p+"-৳ + "+"delevery-100-৳"} className="input input-bordered input-secondary w-full max-w-xs" disabled readOnly />
-           <input type="text" placeholder="Type here"  value={user.displayName} className="input input-bordered input-secondary w-full max-w-xs" disabled readOnly/>
-           <input type="text" placeholder="Type here"  value={user.email} className="input input-bordered input-secondary w-full max-w-xs" disabled readOnly />
-          
-           <input type="text" placeholder="Phone number" {...register("number")} className="input input-bordered input-secondary w-full max-w-xs" required/>
-           <input type="text" placeholder="meeting location" {...register("location")} className="input input-bordered input-secondary w-full max-w-xs" required/>
-           <button className='btn'> {!loading?"Booking Confirm":<Smallloading></Smallloading>}</button>
-           </form>
+           {
+            !selction?<form className="flex flex-col justify-center items-center gap-3 pt-5" onSubmit={handleSubmit(onSubmit)}>
+            <input type="text" placeholder="Type here" value={products.p_name} className="input input-bordered input-secondary w-full max-w-xs" disabled readOnly/>
+            <input type="text" placeholder="Type here"  value={products.resela_p+"-৳ + "+"delevery-100-৳"} className="input input-bordered input-secondary w-full max-w-xs" disabled readOnly />
+            <input type="text" placeholder="Type here"  value={user.displayName} className="input input-bordered input-secondary w-full max-w-xs" disabled readOnly/>
+            <input type="text" placeholder="Type here"  value={user.email} className="input input-bordered input-secondary w-full max-w-xs" disabled readOnly />
+            <input type="text" placeholder="Phone number" {...register("number")} className="input input-bordered input-secondary w-full max-w-xs" required/>
+            <input type="text" placeholder="meeting location" {...register("location")} className="input input-bordered input-secondary w-full max-w-xs" required/>
+            <button className='btn'> {!loading?"Booking Confirm":<Smallloading></Smallloading>}</button>
+            </form>:<div>
+            <div class="card w-full bg-base-100 shadow-xl">
+            <div class="card-body">
+                <h2 class="card-title">Please Payment!</h2>
+                <p>Your order is booked.Please payment your Booking order</p>
+                <div class="card-actions justify-end">
+                <Link to="/Myorder"><button class="btn btn-primary">Go Order page</button></Link>
+                </div>
+            </div>
+            </div>
+            </div>
+           }
         </div>
         </div>
         <Toaster
@@ -72,6 +86,7 @@ const Booknow = ({products}) => {
         position="bottom-right"
         reverseOrder={false}
         />
+     
                 </div>
     );
 };
