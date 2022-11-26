@@ -1,12 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
+import Loading from '../../Commonpage/Loading/Loading';
 import { AuthContext } from '../../Context/Authprovider';
 import useTitle from '../../Hook/Titlehook';
+import Deletemodal from '../../Modal/Deletemodal';
+import Makeadmin from '../../Modal/Makeadmin';
 
 const Myproduct = () => {
     const {user}=useContext(AuthContext);
+    const[userid,SetUserid]=useState("");
     useTitle("My Product")
-    const {data: allproduct = [],refetch} = useQuery({
+    const {data: allproduct = [],refetch,isLoading} = useQuery({
         queryKey: ['productall'],
         queryFn: async() =>{
             const res = await fetch(`https://swap-world-server-site.vercel.app/productall?email=${user.email}`);
@@ -16,6 +20,9 @@ const Myproduct = () => {
     });
     return (
         <div>
+          {
+            isLoading&&<Loading></Loading>
+          }
             <h1 className="text-2xl font-bold mb-5">All Product</h1>
             <div className="overflow-x-auto w-full">
   <table className="table w-full">
@@ -32,6 +39,7 @@ const Myproduct = () => {
         <th>condition</th>
         <th>Details</th>
         <th>post Date</th>
+        <th>manage</th>
       </tr>
     </thead>
     <tbody>
@@ -39,7 +47,7 @@ const Myproduct = () => {
         allproduct.map(product=>
             <tr key={product._id}>
             <th>
-            <label htmlFor="delete-modal" >
+            <label htmlFor="delete-modal" className="cursor-pointer" onClick={()=>{SetUserid(product._id)}}>
                X
               </label>
             </th>
@@ -72,7 +80,12 @@ const Myproduct = () => {
                 {product.p_details.slice(0,20)+"..."}
             </td>
             <td>
-              {((product.postDate).split(" "))[0] +" "+((product.postDate).split(" "))[1]+" "+((product.postDate).split(" "))[2]+" "+((product.postDate).split(" "))[3]}
+              <small>{((product.postDate).split(" "))[0] +","+((product.postDate).split(" "))[1]+" "+((product.postDate).split(" "))[2]+" "+((product.postDate).split(" "))[3]}</small>
+            </td>
+            <td>
+              {
+                product?.status==="sold out"?<p>{product?.status}</p>:product?.status==="advertised"?<p className="text-xs font-medium text-teal-500">{product?.status}</p>:<label htmlFor="admin-modal" className="btn btn-xs" onClick={()=>{SetUserid(product._id)}}>advertise</label>
+              }
             </td>
           </tr>  
             )
@@ -81,6 +94,20 @@ const Myproduct = () => {
     
   </table>
 </div>
+  <Deletemodal
+  type={"product"}
+  userid={userid} 
+  refetch={refetch}
+  >
+
+  </Deletemodal>
+  <Makeadmin
+  type={"product"}
+  userid={userid} 
+  refetch={refetch}
+  >
+
+  </Makeadmin>
         </div>
     );
 };

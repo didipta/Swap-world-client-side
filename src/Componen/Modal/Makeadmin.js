@@ -1,9 +1,28 @@
 import React from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 
-const Makeadmin = ({userid,refetch}) => {
+const Makeadmin = ({userid,refetch,type}) => {
     const handleverified = () => {
-        fetch(`https://swap-world-server-site.vercel.app/makeadmin/${userid}`, {
+
+        if(type==="product")
+        {
+            fetch(`https://swap-world-server-site.vercel.app/productadvertise/${userid}`, {
+                method:"PUT", 
+                // headers: {
+                //     authorization: `bearer ${localStorage.getItem('accessToken')}`
+                // }
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.modifiedCount > 0){
+                    toast.success('Make Admin successful.')
+                    refetch();
+                }
+            })
+        }
+        else
+        {
+            fetch(`https://swap-world-server-site.vercel.app/makeadmin/${userid}`, {
             method:"PUT", 
             // headers: {
             //     authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -12,10 +31,12 @@ const Makeadmin = ({userid,refetch}) => {
         .then(res => res.json())
         .then(data => {
             if(data.modifiedCount > 0){
-                toast.success('Make Admin successful.')
+                toast.success('Advertised successful.')
                 refetch();
             }
         })
+        }
+        
     }
     return (
         <div>
@@ -23,7 +44,7 @@ const Makeadmin = ({userid,refetch}) => {
 <input type="checkbox" id="admin-modal" className="modal-toggle" />
 <div className="modal">
   <div className="modal-box">
-    <h3 className="font-bold text-lg">Are you sure to make him Admin</h3>
+    <h3 className="font-bold text-lg">Are you sure {type==="product"?"this product advertised ":"to make him Admin"}</h3>
     <div className="modal-action">
       <label  htmlFor="admin-modal" onClick={handleverified} className="btn btn-success">Yes</label>
       <label htmlFor="admin-modal" className="btn">No</label>

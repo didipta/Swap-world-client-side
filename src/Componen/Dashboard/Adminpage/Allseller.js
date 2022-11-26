@@ -44,7 +44,7 @@ const Allseller = () => {
            
             <tr key={user._id}>
             <th>
-            <label htmlFor="delete-modal" onClick={()=>{SetUserid(user._id)}}>
+            <label htmlFor="delete-modal" onClick={()=>{SetUserid(user._id)}} className="cursor-pointer">
                X
               </label>
             </th>

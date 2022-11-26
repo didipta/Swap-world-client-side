@@ -7,7 +7,7 @@ const Productshow = (params) => {
    
     const product = useLoaderData();
     useTitle(product.Category.name+"Category")
-    const showproduct=product.Product.filter(p=> p?.states!=="sold out");
+    const showproduct=product.Product.filter(p=> p?.status!=="sold out");
     const navigation = useNavigation();
     console.log(product);
     return (

@@ -1,10 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
+import Loading from '../../Commonpage/Loading/Loading';
 import useTitle from '../../Hook/Titlehook';
 
 const Allproductshow = () => {
     useTitle("All Product")
-    const {data: allproduct = [],refetch} = useQuery({
+    const {data: allproduct = [],refetch,isLoading} = useQuery({
         queryKey: ['productall'],
         queryFn: async() =>{
             const res = await fetch('https://swap-world-server-site.vercel.app/productall?email=');
@@ -14,6 +15,9 @@ const Allproductshow = () => {
     });
     return (
         <div>
+          {
+            isLoading&&<Loading></Loading>
+          }
             <h1 className="text-2xl font-bold mb-5">All Product</h1>
             <div className="overflow-x-auto w-full">
   <table className="table w-full">
@@ -21,7 +25,7 @@ const Allproductshow = () => {
       <tr>
         <th>
           <label>
-            Delete
+            N0
           </label>
         </th>
         <th>Name</th>
@@ -34,11 +38,11 @@ const Allproductshow = () => {
     </thead>
     <tbody>
       {
-        allproduct.map(product=>
+        allproduct.map((product,i)=>
             <tr key={product._id}>
             <th>
             <label htmlFor="delete-modal" >
-               X
+               {i+1}
               </label>
             </th>
             <td>
@@ -70,7 +74,7 @@ const Allproductshow = () => {
                 {product.p_details.slice(0,20)+"..."}
             </td>
             <td>
-              {((product.postDate).split(" "))[0] +" "+((product.postDate).split(" "))[1]+" "+((product.postDate).split(" "))[2]+" "+((product.postDate).split(" "))[3]}
+              {((product.postDate).split(" "))[0] +","+((product.postDate).split(" "))[1]+" "+((product.postDate).split(" "))[2]+" "+((product.postDate).split(" "))[3]}
             </td>
           </tr>  
             )

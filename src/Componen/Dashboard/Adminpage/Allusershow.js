@@ -1,6 +1,7 @@
 
 import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
+import Loading from '../../Commonpage/Loading/Loading';
 import useTitle from '../../Hook/Titlehook';
 import Deletemodal from '../../Modal/Deletemodal';
 import Makeadmin from '../../Modal/Makeadmin';
@@ -9,7 +10,7 @@ import Verifymodal from '../../Modal/Verifymodal';
 const Allusershow = () => {
   useTitle("All User")
     const[userid,SetUserid]=useState("");
-    const {data: alluser = [],refetch} = useQuery({
+    const {data: alluser = [],refetch,isLoading} = useQuery({
         queryKey: ['alluser'],
         queryFn: async() =>{
             const res = await fetch('https://swap-world-server-site.vercel.app/users?role=Buyer');
@@ -19,6 +20,9 @@ const Allusershow = () => {
     });
     return (
         <div>
+          {
+            isLoading&&<Loading></Loading>
+          }
             <h1 className="text-xl font-semibold mb-2">ALL User Show</h1>
 
             <div className="overflow-x-auto w-full">

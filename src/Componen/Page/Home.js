@@ -1,6 +1,7 @@
 import React from 'react';
 import Catagorysshow from '../Commonpage/Catagorysshow';
 import useTitle from '../Hook/Titlehook';
+import Advertiesproduct from '../Product/Advertiesproduct';
 import Banner from './Banner/Banner';
 
 const Home = () => {
@@ -8,7 +9,9 @@ const Home = () => {
     return (
         <div>
            <Banner></Banner>
+           <Advertiesproduct></Advertiesproduct>
            <Catagorysshow></Catagorysshow>
+           
         </div>
     );
 };
