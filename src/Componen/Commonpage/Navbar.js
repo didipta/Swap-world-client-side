@@ -122,7 +122,7 @@ const Navbar = () => {
        
         </li>
       <li>
-          <NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/Aboutus" className="justify-between">
+          <NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/About" className="justify-between">
             About Us
             <span className="badge">New</span>
           </NavLink>

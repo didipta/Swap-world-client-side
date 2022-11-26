@@ -10,6 +10,8 @@ import { AuthContext } from '../Context/Authprovider';
 import { GoogleAuthProvider } from 'firebase/auth';
 import Forgetpass from './Forgetpass';
 import toast from 'react-hot-toast';
+import Usetoken from '../Hook/Usetoken';
+
 const Login = () => {
     useTitle("Login page");
     const { googlelogin,siginwithemailpassword,setUserrole,deleteuser}=useContext(AuthContext);
@@ -17,10 +19,16 @@ const Login = () => {
     const [loading,setloading]=useState(false);
     const[passwordtype,setPassword]=useState(false);
     const [error,setError]=useState("");
+    const [loginUserEmail, setLoginUserEmail] = useState('');
+    const [token] = Usetoken(loginUserEmail);
     const googleprovider=new GoogleAuthProvider();
     const location=useLocation();
     const from=location.state?.from?.pathname || '/';
     const navigator=useNavigate();
+
+    if (token) {
+      navigator(from, { replace: true });
+  }
     const onSubmit = data =>
     {
       setloading(true);
@@ -32,7 +40,8 @@ const Login = () => {
             .then(res => res.json())
             .then(data => {
               setloading(false);
-              navigator(from,{replace:true});
+              setLoginUserEmail(user.email)
+              
              })
               .catch(error=>{
               deleteuser()
@@ -43,13 +52,9 @@ const Login = () => {
                 setloading(false);
                   // User deleted.
                 }).catch((error) => {
-                  // An error ocurred
-                  // ...
                 });
             })
-              // const currentUser = {
-              //     email: user.email
-              // }
+              
 
           })
       .catch(e=>
@@ -80,33 +85,15 @@ const Login = () => {
         })
         .then(res => res.json())
         .then(data =>{
-          navigator(from,{replace:true});
+          setLoginUserEmail(user.email)
         })
         .catch(e=>
           {
-              
+            
           })
     })
 
-      //    fetch('https://server-side-beta.vercel.app/jwt', {
-      //       method: 'POST',
-      //       headers: {
-      //           'content-type': 'application/json'
-      //       },
-      //       body: JSON.stringify(currentUser)
-      //   })
-      //       .then(res => res.json())
-      //       .then(data => {
-               
-      //           // local storage to store jwt token
-      //           localStorage.setItem('Artworld-token', data.token);
-      //           navigator(from,{replace:true});
-      //       });
-      // })
-      // .catch(err=>
-      //   {
-      //       console.log(err);
-      //   })
+  
     }
     return (
         <div className=" p-5 h-screen flex flex-col justify-center items-center overflow-x-auto">

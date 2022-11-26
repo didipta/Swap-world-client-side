@@ -4,15 +4,14 @@ import { Link } from 'react-router-dom';
 import Loading from '../Commonpage/Loading/Loading';
 
 const Advertiesproduct = () => {
-    const {data: allproduct = [],refetch,isLoading} = useQuery({
+    const {data: showproduct = [],refetch,isLoading} = useQuery({
         queryKey: ['productall'],
         queryFn: async() =>{
-            const res = await fetch('https://swap-world-server-site.vercel.app/productall?email=');
+            const res = await fetch('https://swap-world-server-site.vercel.app/advertiseproduct');
             const data = await res.json();
             return data;
         }
     });
-    const showproduct=allproduct.filter(p=> p?.status==="advertised");
     return (
         <>
         {

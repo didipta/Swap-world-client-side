@@ -12,7 +12,12 @@ const Allseller = () => {
     const {data: alluser = [],refetch} = useQuery({
         queryKey: ['alluser'],
         queryFn: async() =>{
-            const res = await fetch('https://swap-world-server-site.vercel.app/users?role=Seller');
+            const res = await fetch('https://swap-world-server-site.vercel.app/users?role=Seller',
+            {
+              headers: {
+                authorization: `bearer ${localStorage.getItem('swapworldToken')}`
+              }
+            });
             const data = await res.json();
             return data;
         }

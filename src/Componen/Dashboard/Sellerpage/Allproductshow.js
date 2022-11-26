@@ -8,7 +8,11 @@ const Allproductshow = () => {
     const {data: allproduct = [],refetch,isLoading} = useQuery({
         queryKey: ['productall'],
         queryFn: async() =>{
-            const res = await fetch('https://swap-world-server-site.vercel.app/productall?email=');
+            const res = await fetch('https://swap-world-server-site.vercel.app/productall?email=',{
+              headers: {
+                authorization: `bearer ${localStorage.getItem('swapworldToken')}`
+            }
+            });
             const data = await res.json();
             return data;
         }

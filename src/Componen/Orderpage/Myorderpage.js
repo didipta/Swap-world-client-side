@@ -20,11 +20,11 @@ const Myorderpage = () => {
     return (
         <>
         {
-            allorders!==0? <div className="p-10 pt-20">
+            allorders!==0? <div className="pt-20">
             {
             isLoading&&<Loading></Loading>
           }
-            <h1 className="text-xl font-semibold mb-5">My order</h1>
+            <h1 className="text-xl font-semibold mb-5 text-center">My order</h1>
             <div className="overflow-x-auto w-full">
   <table className="table w-full">
     <thead>

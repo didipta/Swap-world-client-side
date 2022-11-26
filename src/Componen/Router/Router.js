@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import About from "../Commonpage/About";
 import Error from "../Commonpage/Error";
 import Login from "../Commonpage/Login";
 import Singup from "../Commonpage/Singup";
@@ -42,11 +43,22 @@ export const routers=createBrowserRouter([
             {
                 path:"/category/:id",
                 element:<Privetrouter><Productshow></Productshow></Privetrouter>,
-                loader: ({params}) => fetch(`https://swap-world-server-site.vercel.app/productallshow/${params.id}`)
+                loader: ({params}) => fetch(`https://swap-world-server-site.vercel.app/productallshow/${params.id}`,
+                {
+                    headers: {
+                      authorization: `bearer ${localStorage.getItem('swapworldToken')}`
+                  }
+                }
+                )
             },
             {
                 path:"/Myorder",
                 element:<Privetrouter><Myorderpage></Myorderpage></Privetrouter>,
+            },
+            {
+                path:"/About",
+                element:<About></About>
+
             }
         ]
     }

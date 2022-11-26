@@ -13,7 +13,13 @@ const Allusershow = () => {
     const {data: alluser = [],refetch,isLoading} = useQuery({
         queryKey: ['alluser'],
         queryFn: async() =>{
-            const res = await fetch('https://swap-world-server-site.vercel.app/users?role=Buyer');
+            const res = await fetch('https://swap-world-server-site.vercel.app/users?role=Buyer',
+            {
+              headers: {
+                authorization: `bearer ${localStorage.getItem('swapworldToken')}`
+              }
+            }
+            );
             const data = await res.json();
             return data;
         }

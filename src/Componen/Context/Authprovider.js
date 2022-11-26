@@ -22,7 +22,7 @@ const Authprovider = ({children}) => {
         .then(res => {
             setUserrole(" ")
             setCartitem([])
-            // localStorage.removeItem('Artworld-token');
+            localStorage.removeItem('swapworldToken');
             setUser(null);
         })
         .catch(error=>{

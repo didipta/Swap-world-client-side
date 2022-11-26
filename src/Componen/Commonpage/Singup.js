@@ -9,6 +9,8 @@ import Smallloading from './Loading/Smallloading';
 
 import toast, { Toaster } from 'react-hot-toast';
 import { AuthContext } from '../Context/Authprovider';
+import Usetoken from '../Hook/Usetoken';
+
 const Singup = () => {
   
   const {createuser,upadateuserprofile,setUserrole}=useContext(AuthContext);
@@ -23,8 +25,12 @@ const Singup = () => {
     const from=location.state?.from?.pathname || '/';
     const navigator=useNavigate();
     const [click,setClick]=useState(false);
+    const [loginUserEmail, setLoginUserEmail] = useState('');
+    const [token] = Usetoken(loginUserEmail);
 
-
+    if (token) {
+      navigator(from, { replace: true });
+     }
 
     const onSubmit = data => {
         
@@ -46,13 +52,12 @@ const Singup = () => {
                  console.log(res)
                  heandelupdateprofile(data.name,image.data.url);
                  heandeluser(data.name,data.phone,data.role,data.Email)
-                 toast.success('Successfully Added!')
                  setloading(false)
-                 navigator(from,{replace:true});
+                 
              })
      .catch(e=>
          {
-             toast.error("This didn't work.")
+             toast.error("Added error")
              console.log(e);
          })
           }
@@ -90,6 +95,8 @@ const Singup = () => {
         })
         .then(res => res.json())
         .then(data =>{
+          setLoginUserEmail(email)
+          toast.success('Successfully Added!')
           setUserrole(role);
         })
         .catch(e=>
