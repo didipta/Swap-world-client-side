@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { useLoaderData, useNavigation } from 'react-router-dom';
 import Loading from '../Commonpage/Loading/Loading';
 import useTitle from '../Hook/Titlehook';
+import Booknow from './Booknow';
 
 const Productshow = (params) => {
    
     const product = useLoaderData();
+    const [products,SetProduct]=useState({});
     useTitle(product.Category.name+"Category")
-    const showproduct=product.Product.filter(p=> p?.status!=="sold out");
+    const showproduct=product.Product.filter(p=> p?.status!=="Sold out");
     const navigation = useNavigation();
     console.log(product);
     return (
@@ -41,8 +43,8 @@ const Productshow = (params) => {
                            
                             </div>
                             <div className="flex gap-2 pt-4">
-                                <button className="btn btn-sm bg-teal-500 text-white border-none">Book noe</button>
-                                <button className="btn btn-sm bg-red-400 text-white border-none">Report</button>
+                            <label htmlFor="booknow-modal-3" className="btn btn-sm bg-teal-500 text-white border-none" onClick={()=>SetProduct(product)}>Book noe</label>
+                            <button className="btn btn-sm bg-red-400 text-white border-none">WishList</button>
                             </div>
                         </div>
                         )
@@ -51,7 +53,9 @@ const Productshow = (params) => {
                 
                 </>
             }
-            
+            <Booknow
+            products={products}
+            ></Booknow>
         </div>
     );
 };

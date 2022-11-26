@@ -26,9 +26,8 @@ const Navbar = () => {
               userrole==="Seller"? <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/SellerDashboard">Dashboard</NavLink></li>:<></>
             }
              {
-               userrole==="Buyer"&&<li><a>My Order</a></li>
+               user!==null&&<li><a>My Order</a></li>
             }
-            <li><a>About us</a></li>
             <li><a>Contact Us</a></li>
             </ul>
           </div>
@@ -52,9 +51,9 @@ const Navbar = () => {
               userrole==="Seller"? <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/SellerDashboard">Dashboard</NavLink></li>:<></>
             }
              {
-               userrole==="Buyer"&&<li><a>My Order</a></li>
+               user!==null&&<li><a>My Order</a></li>
             }
-             <li><a>About us</a></li>
+             
             <li><a>Contact Us</a></li>
           </ul>
         </div>

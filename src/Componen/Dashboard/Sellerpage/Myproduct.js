@@ -84,7 +84,7 @@ const Myproduct = () => {
             </td>
             <td>
               {
-                product?.status==="sold out"?<p>{product?.status}</p>:product?.status==="advertised"?<p className="text-xs font-medium text-teal-500">{product?.status}</p>:<label htmlFor="admin-modal" className="btn btn-xs" onClick={()=>{SetUserid(product._id)}}>advertise</label>
+                product?.status==="Sold out"?<p className="text-xs font-medium text-orange-500">{product?.status}</p>:product?.status==="advertised"?<p className="text-xs font-medium text-teal-500">{product?.status}</p>:<label htmlFor="admin-modal" className="btn btn-xs" onClick={()=>{SetUserid(product._id)}}>advertise</label>
               }
             </td>
           </tr>  
