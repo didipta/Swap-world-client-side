@@ -8,7 +8,7 @@ import Category from '../Hook/Category';
 import { useQuery } from '@tanstack/react-query';
 const Navbar = () => {
     const {theme, setTheme,user,signoutall, userrole,carditem}=useContext(AuthContext);
-  const filtercart=carditem.filter(cart=>cart?.sataus!=="paid");
+    const filtercart=carditem.filter(cart=>cart?.sataus!=="paid");
     let total=0;
     filtercart?.map(x=>
       {

@@ -58,12 +58,22 @@ const Authprovider = ({children}) => {
             .then(res => res.json())
             .then(data => {
               setUserrole(data.role)
-              fetch(`https://swap-world-server-site.vercel.app/ordertall?email=${data?.email}&&type=Buyer`)
-                    .then(res => res.json())
-                    .then(data => {
-                      setCartitem(data)
-                    })
-      
+              if(data !==null&&localStorage.getItem('swapworldToken')!==null)
+              {
+                fetch(`https://swap-world-server-site.vercel.app/ordertall?email=${data?.email}&&type=Buyer`,
+                {
+                  headers: {
+                    authorization: `bearer ${localStorage.getItem('swapworldToken')}`
+                  }
+              }
+                )
+                      .then(res => res.json())
+                      .then(data => {
+                        setCartitem(data)
+                      })
+        
+              }
+              
             })
             
               setUser(currentUser);
