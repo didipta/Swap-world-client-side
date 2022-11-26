@@ -75,7 +75,8 @@ const Addproduct = () => {
         fetch("https://swap-world-server-site.vercel.app/product", {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('swapworldToken')}`
             },
             body: JSON.stringify(product)
         })
@@ -89,6 +90,7 @@ const Addproduct = () => {
             setloading(false)
           })
     }
+   
     return (
         <div>
             <h1 className="text-2xl font-bold mb-4 text-center">Add Product </h1>
