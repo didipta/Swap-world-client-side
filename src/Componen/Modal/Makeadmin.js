@@ -15,7 +15,7 @@ const Makeadmin = ({userid,refetch,type}) => {
             .then(res => res.json())
             .then(data => {
                 if(data.modifiedCount > 0){
-                    toast.success('Make Admin successful.')
+                    toast.success('Advertised successful.')
                     refetch();
                 }
             })
@@ -31,7 +31,8 @@ const Makeadmin = ({userid,refetch,type}) => {
         .then(res => res.json())
         .then(data => {
             if(data.modifiedCount > 0){
-                toast.success('Advertised successful.')
+                
+                toast.success('Make Admin successful.')
                 refetch();
             }
         })

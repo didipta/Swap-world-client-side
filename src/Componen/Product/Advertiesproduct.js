@@ -19,7 +19,7 @@ const Advertiesproduct = () => {
                 isLoading&&<Loading></Loading>
             }
             <h1 className='text-xl font-semibold'>Advertise Product</h1>
-            <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 justify-center p-5">
+            <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 justify-center p-5 gap-4">
             {
                 showproduct.map(product=>
                     <Link to={`/category/${product.category}`}><div key={product._id} className="p-6 shadow-lg bg-white shadow-slate-300 flex flex-col justify-center gap-2 text-slate-800 font-medium rounded-sm">

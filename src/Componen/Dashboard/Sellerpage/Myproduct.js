@@ -23,7 +23,7 @@ const Myproduct = () => {
           {
             isLoading&&<Loading></Loading>
           }
-            <h1 className="text-2xl font-bold mb-5">All Product</h1>
+            <h1 className="text-2xl font-bold mb-5">My Product</h1>
             <div className="overflow-x-auto w-full">
   <table className="table w-full">
     <thead>
