@@ -140,7 +140,9 @@ const Navbar = () => {
           <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined}to="/Loginpage">Login</NavLink></li>
         }
       
-        
+        <li>
+        <NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined}to="/Blogs">Blogs</NavLink>
+        </li>
         <li>
           <div className="flex justify-between items-center">
             <p>{!theme?"Light Mode":"Dark Mode"}</p>

@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import Blogs from "../Blogs.js/Blogs";
 import About from "../Commonpage/About";
 import Error from "../Commonpage/Error";
 import Login from "../Commonpage/Login";
@@ -64,6 +65,12 @@ export const routers=createBrowserRouter([
             {
                 path:"/About",
                 element:<About></About>
+
+            }
+            ,
+            {
+                path:"/Blogs",
+                element:<Blogs></Blogs>
 
             }
         ]

@@ -48,14 +48,14 @@ const Wish = ({products}) => {
                 <label htmlFor="wish-modal" className="btn" onClick={heandelwish}>Yay!</label>
                 </div>
             </div>
+        
+            </div>
+            
             <Toaster
         className="z-50"
         position="bottom-right"
         reverseOrder={false}
         />
-            </div>
-            
-     
         </div>
     );
 };
