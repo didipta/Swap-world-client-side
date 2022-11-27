@@ -74,7 +74,7 @@ const Myorderpage = () => {
             </td>
             <td>{orders.location}<br/>
             </td>
-            <td>{orders.email}<br/>
+            <td>{orders.seller}<br/>
             </td>
             <td>{orders.number}<br/>
             </td>

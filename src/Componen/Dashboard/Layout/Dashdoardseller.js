@@ -37,6 +37,7 @@ const Dashdoardseller = () => {
             <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/SellerDashboard/addproduct">Add Product</NavLink></li>
             <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/SellerDashboard/allproduct">All Product</NavLink></li>
             <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/SellerDashboard/myproduct">My Products</NavLink></li>
+            <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/SellerDashboard/mybuyer">My Buyers</NavLink></li>
             <li><Link onClick={signoutall} to="/Loginpage">Logout</Link></li>
             </ul>
         

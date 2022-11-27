@@ -9,6 +9,7 @@ import Dashdoardmain from "../Dashboard/Layout/Dashdoardmain";
 import Dashdoardseller from "../Dashboard/Layout/Dashdoardseller";
 import Addproduct from "../Dashboard/Sellerpage/Addproduct";
 import Allproductshow from "../Dashboard/Sellerpage/Allproductshow";
+import Mybuyer from "../Dashboard/Sellerpage/Mybuyer";
 import Myproduct from "../Dashboard/Sellerpage/Myproduct";
 import Main from "../Layout/Main";
 import Myorderpage from "../Orderpage/Myorderpage";
@@ -114,6 +115,11 @@ export const routers=createBrowserRouter([
             {
                 path:"/SellerDashboard/myproduct",
                 element:<Myproduct></Myproduct>
+            }
+            ,
+            {
+                path:"/SellerDashboard/mybuyer",
+                element:<Mybuyer></Mybuyer>
             }
             
         ]
