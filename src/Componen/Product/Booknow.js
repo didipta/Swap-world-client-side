@@ -34,7 +34,8 @@ const Booknow = ({products}) => {
         fetch("https://swap-world-server-site.vercel.app/order", {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('swapworldToken')}`
             },
             body: JSON.stringify(order)
         })

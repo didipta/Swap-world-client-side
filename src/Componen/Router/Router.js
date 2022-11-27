@@ -13,6 +13,7 @@ import Mybuyer from "../Dashboard/Sellerpage/Mybuyer";
 import Myproduct from "../Dashboard/Sellerpage/Myproduct";
 import Main from "../Layout/Main";
 import Myorderpage from "../Orderpage/Myorderpage";
+import Wishpage from "../Orderpage/Wishpage";
 import Home from "../Page/Home";
 import Productshow from "../Product/Productshow";
 import Adminroute from "./Adminroute";
@@ -55,6 +56,10 @@ export const routers=createBrowserRouter([
             {
                 path:"/Myorder",
                 element:<Privetrouter><Myorderpage></Myorderpage></Privetrouter>,
+            },
+            {
+                path:"/MyWishlist",
+                element:<Privetrouter><Wishpage></Wishpage></Privetrouter>,
             },
             {
                 path:"/About",

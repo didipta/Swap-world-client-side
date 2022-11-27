@@ -32,7 +32,9 @@ const Navbar = () => {
               userrole==="Seller"? <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/SellerDashboard">Dashboard</NavLink></li>:<></>
             }
              {
-               user!==null&&<li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/Myorder">My Order</NavLink></li>
+               user!==null&&<><li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/Myorder">My Order</NavLink></li>
+               <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/MyWishlist">My wish list</NavLink></li>
+               </>
             }
             <li><a>Contact Us</a></li>
             </ul>
@@ -57,7 +59,9 @@ const Navbar = () => {
               userrole==="Seller"? <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/SellerDashboard">Dashboard</NavLink></li>:<></>
             }
              {
-               user!==null&&<li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined}to="/Myorder">My Order</NavLink></li>
+               user!==null&&<><li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/Myorder">My Order</NavLink></li>
+               <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/MyWishlist">My wish list</NavLink></li>
+               </>
             }
              
             <li><a>Contact Us</a></li>

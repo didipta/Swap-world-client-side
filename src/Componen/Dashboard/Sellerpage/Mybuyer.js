@@ -28,6 +28,7 @@ const Mybuyer = () => {
             let newbuyer={};
             newbuyer.name=x.user;
             newbuyer.email=x.email;
+            newbuyer.number=x.number;
             newbuyer.count=1;
             mybuyer.push(newbuyer);
 
@@ -57,7 +58,8 @@ const Mybuyer = () => {
         </th>
         <th>Buyer ame</th>
         <th>Buyer Email</th>
-       <th>Orber </th>
+        <th>Buyer phone no</th>
+       <th>Total time Orber </th>
       </tr>
     </thead>
     <tbody>
@@ -71,6 +73,7 @@ const Mybuyer = () => {
             </th>
              <td>{p.name}</td>
              <td>{p.email}</td>
+             <td>{p.number}</td>
              <td>{p.count}</td>
               
           </tr>  
