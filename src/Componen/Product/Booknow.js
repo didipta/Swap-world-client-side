@@ -73,7 +73,7 @@ const Booknow = ({products}) => {
                 <h2 class="card-title">Please Payment!</h2>
                 <p>Your order is booked.Please payment your Booking order</p>
                 <div class="card-actions justify-end">
-                <Link to="/Myorder"><button class="btn btn-primary">Go Order page</button></Link>
+                <a href="/Myorder"><button class="btn btn-primary">Go Order page</button></a>
                 </div>
             </div>
             </div>

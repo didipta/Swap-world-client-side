@@ -60,17 +60,7 @@ const Authprovider = ({children}) => {
               setUserrole(data.role)
               if(data !==null&&localStorage.getItem('swapworldToken')!==null)
               {
-                fetch(`https://swap-world-server-site.vercel.app/ordertall?email=${data?.email}&&type=Buyer`,
-                {
-                  headers: {
-                    authorization: `bearer ${localStorage.getItem('swapworldToken')}`
-                  }
-              }
-                )
-                      .then(res => res.json())
-                      .then(data => {
-                        setCartitem(data)
-                      })
+                setcartheandle(data)
         
               }
               
@@ -85,13 +75,19 @@ const Authprovider = ({children}) => {
           }
   
       },[])
-      const setcartheandle=()=>
+      const setcartheandle=(data)=>
       {
-            fetch(`https://swap-world-server-site.vercel.app/ordertall?email=${user?.email}&&type=Buyer`)
-                    .then(res => res.json())
-                    .then(data => {
-                      setCartitem(data)
-                    })
+        fetch(`https://swap-world-server-site.vercel.app/ordertall?email=${data?.email}&&type=Buyer`,
+        {
+          headers: {
+            authorization: `bearer ${localStorage?.getItem('swapworldToken')}`
+          }
+      }
+        )
+              .then(res => res.json())
+              .then(data => {
+                setCartitem(data)
+              })
       }
       const authInfo={
         user,

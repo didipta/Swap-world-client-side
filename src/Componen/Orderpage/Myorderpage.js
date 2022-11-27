@@ -11,7 +11,13 @@ const Myorderpage = () => {
     const {data: allorders = [],refetch,isLoading} = useQuery({
         queryKey: ['ordertall'],
         queryFn: async() =>{
-            const res = await fetch(`https://swap-world-server-site.vercel.app/ordertall?email=${user.email}&&type=Buyer`);
+            const res = await fetch(`https://swap-world-server-site.vercel.app/ordertall?email=${user.email}&&type=Buyer`,
+            {
+              headers: {
+                authorization: `bearer ${localStorage.getItem('swapworldToken')}`
+              }
+            }
+            );
             const data = await res.json();
             return data;
         }
