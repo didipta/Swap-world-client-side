@@ -11,7 +11,7 @@ const Wishpage = () => {
     console.log(user.email);
     useTitle("My Wish List")
     const {data: wishlist = [],refetch,isLoading} = useQuery({
-        queryKey: ['ordertall'],
+        queryKey: ['productwish'],
         queryFn: async() =>{
             const res = await fetch(`https://swap-world-server-site.vercel.app/productwish?email=${user.email}`,
             {
