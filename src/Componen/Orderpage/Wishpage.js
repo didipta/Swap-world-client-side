@@ -32,7 +32,7 @@ const Wishpage = () => {
             {
             isLoading&&<Loading></Loading>
           }
-            <h1 className="text-xl font-semibold mb-5 text-center">My order</h1>
+            <h1 className="text-xl font-semibold mb-5 text-center">My Wish List</h1>
             <div className="overflow-x-auto w-full">
   <table className="table w-full">
     <thead>
