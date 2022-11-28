@@ -3,7 +3,9 @@ import Blogs from "../Blogs.js/Blogs";
 import About from "../Commonpage/About";
 import Error from "../Commonpage/Error";
 import Login from "../Commonpage/Login";
+import Profile from "../Commonpage/Profile";
 import Singup from "../Commonpage/Singup";
+import Allorder from "../Dashboard/Adminpage/Allorder";
 import Allseller from "../Dashboard/Adminpage/Allseller";
 import Allusershow from "../Dashboard/Adminpage/Allusershow";
 import Dashdoardmain from "../Dashboard/Layout/Dashdoardmain";
@@ -12,6 +14,7 @@ import Addproduct from "../Dashboard/Sellerpage/Addproduct";
 import Allproductshow from "../Dashboard/Sellerpage/Allproductshow";
 import Mybuyer from "../Dashboard/Sellerpage/Mybuyer";
 import Myproduct from "../Dashboard/Sellerpage/Myproduct";
+import Orderdetails from "../Dashboard/Sellerpage/Orderdetails";
 import Main from "../Layout/Main";
 import Myorderpage from "../Orderpage/Myorderpage";
 import Wishpage from "../Orderpage/Wishpage";
@@ -69,6 +72,11 @@ export const routers=createBrowserRouter([
             }
             ,
             {
+                path:"/profile",
+                element:<Privetrouter><Profile></Profile></Privetrouter>
+            }
+            ,
+            {
                 path:"/Blogs",
                 element:<Blogs></Blogs>
 
@@ -100,6 +108,13 @@ export const routers=createBrowserRouter([
                 path:"/Dashboard/allproduct",
                 element:<Allproductshow></Allproductshow>
             }
+            ,
+            {
+                path:"/Dashboard/allorder",
+                element:<Allorder></Allorder>
+            }
+           
+            
             
         ]
     }
@@ -132,6 +147,11 @@ export const routers=createBrowserRouter([
             {
                 path:"/SellerDashboard/mybuyer",
                 element:<Mybuyer></Mybuyer>
+            }
+            ,
+            {
+                path:"/SellerDashboard/myproductorder",
+                element:<Orderdetails></Orderdetails>
             }
             
         ]

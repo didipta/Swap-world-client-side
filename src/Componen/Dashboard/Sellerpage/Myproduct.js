@@ -84,7 +84,7 @@ const Myproduct = () => {
             </td>
 
             <td>
-                {product.p_details.slice(0,20)+"..."}
+            {product.p_details.length<=20?product.p_details:product.p_details.slice(0,20)+"..."}
             </td>
             <td>
               <small>{((product.postDate).split(" "))[0] +","+((product.postDate).split(" "))[1]+" "+((product.postDate).split(" "))[2]+" "+((product.postDate).split(" "))[3]}</small>

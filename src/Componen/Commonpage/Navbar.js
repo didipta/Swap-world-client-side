@@ -39,7 +39,7 @@ const Navbar = () => {
             <li><a>Contact Us</a></li>
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">
+          <Link to="/" className="btn btn-ghost normal-case text-xl">
           <div className="flex justify-center items-center">
             <img src={logo} alt="" class="mask mask-circle w-10" ></img>
             <div>
@@ -47,7 +47,7 @@ const Navbar = () => {
                 <p className="text-sm text-slate-400 center">Mobile Resela</p>
             </div>
             </div>
-          </a>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
@@ -134,7 +134,7 @@ const Navbar = () => {
         {
           user!==null?<>
            
-        <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/prfile">Settings</NavLink></li>
+        <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/profile">Settings</NavLink></li>
         <li><Link onClick={signoutall}>Logout</Link></li>
           </>:
           <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined}to="/Loginpage">Login</NavLink></li>

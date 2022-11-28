@@ -6,7 +6,7 @@ import useTitle from '../../Hook/Titlehook';
 
 const Mybuyer = () => {
     const {user}=useContext(AuthContext);
-    useTitle("My Buyer")
+    useTitle("My Buyers")
     const {data: allorders = [],refetch,isLoading} = useQuery({
         queryKey: ['ordertall'],
         queryFn: async() =>{
@@ -46,7 +46,7 @@ const Mybuyer = () => {
           {
             isLoading&&<Loading></Loading>
           }
-            <h1 className="text-2xl font-bold mb-5">My Product</h1>
+            <h1 className="text-2xl font-bold mb-5">My Buyers</h1>
             <div className="overflow-x-auto w-full">
   <table className="table w-full">
     <thead>

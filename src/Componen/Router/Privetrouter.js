@@ -4,7 +4,7 @@ import Loading from '../Commonpage/Loading/Loading';
 
 import { AuthContext } from '../Context/Authprovider';
 const Privetrouter = ({children}) => {
-    const {user,loading}=useContext(AuthContext);
+    const {user,loading,signoutall}=useContext(AuthContext);
     const location=useLocation();
     if(loading)
     {
@@ -15,6 +15,7 @@ const Privetrouter = ({children}) => {
     }
     if(!user)
     {
+        signoutall();
         return <Navigate to="/Loginpage" state={{from:location}} replace></Navigate>
     }
     return children;

@@ -10,7 +10,7 @@ const Dashdoardseller = () => {
     return (
         <div>
             <div className="flex justify-between items-center">
-            <a className="btn btn-ghost normal-case text-xl">
+            <Link to="/" className="btn btn-ghost normal-case text-xl">
           <div className="flex justify-items-center items-center gap-2">
             <img src={logo} alt="" class="mask mask-circle w-10" ></img>
             <div>
@@ -18,7 +18,7 @@ const Dashdoardseller = () => {
                 <p className="text-sm text-slate-400 center">Mobile Resela</p>
             </div>
             </div>
-          </a>
+          </Link>
           <div className="drawer-content mr-5">
             
             <label htmlFor="my-drawer-2" className="lg:hidden"><FontAwesomeIcon icon={faBars}></FontAwesomeIcon></label>
@@ -38,6 +38,7 @@ const Dashdoardseller = () => {
             <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/SellerDashboard/allproduct">All Product</NavLink></li>
             <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/SellerDashboard/myproduct">My Products</NavLink></li>
             <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/SellerDashboard/mybuyer">My Buyers</NavLink></li>
+            <li><NavLink className={({isActive})=>isActive? 'text-cyan-600 font-semibold bg-none outline-none' : undefined} to="/SellerDashboard/myproductorder">My product order</NavLink></li>
             <li><Link onClick={signoutall} to="/Loginpage">Logout</Link></li>
             </ul>
         
