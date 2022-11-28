@@ -3,9 +3,9 @@
 Live Link:
 ## [https://swap-world-b84bc.web.app/](https://swap-world-b84bc.web.app/)
 
-# Admin Email and password:
+## Admin Email and password:
 
-Email:admin20@gmail.com
+Email:admin20@gmail.com ,
 password: A@12345
 
 ## Here is what I did in my project
