@@ -17,6 +17,7 @@ const Allproductshow = () => {
             return data;
         }
     });
+    console.log(allproduct);
     return (
         <div>
           {

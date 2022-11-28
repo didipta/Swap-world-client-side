@@ -24,6 +24,7 @@ const Myproduct = () => {
             return data;
         }
     });
+    console.log(allproduct);
     return (
         <div>
           {

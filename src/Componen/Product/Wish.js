@@ -27,8 +27,16 @@ const Wish = ({products}) => {
         })
         .then(res => res.json())
         .then(data =>{
+            console.log(data);
+            if(data.acknowledged===true)
+            {
+                toast.success("wish list add successful")
+            }
+            else
+            {
+                toast.error("Alraedy added wish list");
+            }
             
-            toast.success("wish list add successful")
         })
         .catch(e=>
           {

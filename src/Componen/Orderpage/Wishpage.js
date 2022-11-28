@@ -75,7 +75,7 @@ const Wishpage = () => {
             <td>{wish.product?.selleremail}<br/>
             </td>
             <td>
-                {wish.status==="Wishlist"?<label htmlFor="booknow-modal-3" className="btn btn-sm bg-teal-500 text-white border-none" onClick={()=>SetProduct(wish.product)}>Book Now</label>:<p className="text-xs font-semibold text-pink-600">{wish.status}</p>}
+                {wish.status==="Wishlist"?<label htmlFor="booknow-modal-3" className="btn btn-sm bg-teal-500 text-white border-none" onClick={()=>SetProduct(wish.product)}>Book Now</label>:<p className="text-xs font-semibold text-pink-600">{wish.status==="Booking"&&"Already Booked"}</p>}
               
             </td>
           </tr>  

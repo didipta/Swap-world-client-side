@@ -1,11 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Loading from '../Commonpage/Loading/Loading';
 import { AuthContext } from '../Context/Authprovider';
 import useTitle from '../Hook/Titlehook';
 
+import Paymentproduct from './Paymentproduct';
+
 const Myorderpage = () => {
     const {user}=useContext(AuthContext);
+    const[orderdetails,setOrderdetails]=useState({});
     console.log(user.email);
     useTitle("My Order")
     const {data: allorders = [],refetch,isLoading} = useQuery({
@@ -45,6 +48,7 @@ const Myorderpage = () => {
         <th>Location</th>
         <th>Seller email</th>
         <th>mobile number</th>
+        <th>transactionId</th>
         <th>sataus</th>
       </tr>
     </thead>
@@ -79,7 +83,10 @@ const Myorderpage = () => {
             <td>{orders.number}<br/>
             </td>
             <td>
-                {orders.sataus==="Booking"?<button className="btn btn-xs">Payment</button>:orders.sataus}
+              {orders?.transactionId}
+            </td>
+            <td>
+                {orders.sataus==="Booking"?<label htmlFor="my-modal" className="btn btn-xs" onClick={()=>setOrderdetails(orders)}>Payment</label>:orders.sataus}
               
             </td>
           </tr>  
@@ -88,9 +95,13 @@ const Myorderpage = () => {
     </tbody>
     
   </table>
+  <Paymentproduct
+  orderdetails={orderdetails}
+  ></Paymentproduct>
 </div>
         </div>:<h1 className="pt-20 p-10 text-xl text-center font-semibold">You have not placed any order</h1>
         }
+       
         </>
        
     );
