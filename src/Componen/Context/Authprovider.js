@@ -86,7 +86,14 @@ const Authprovider = ({children}) => {
         )
               .then(res => res.json())
               .then(data => {
+                if(data.message==='Forbidden access'||data.message==='unauthorized access')
+                {
+                  signoutall();
+                }
                 setCartitem(data)
+              })
+              .catch((err)=>{
+                
               })
       }
       const authInfo={
